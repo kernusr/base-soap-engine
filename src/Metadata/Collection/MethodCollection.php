@@ -18,7 +18,7 @@ final class MethodCollection implements Countable, IteratorAggregate
     /**
      * @var list<Method>
      */
-    private array $methods;
+    private $methods;
 
     /**
      * @no-named-arguments
@@ -38,7 +38,7 @@ final class MethodCollection implements Countable, IteratorAggregate
         return count($this->methods);
     }
 
-    public function map(callable  $callback): array
+    public function map(callable $callback): array
     {
         return array_map($callback, $this->methods);
     }

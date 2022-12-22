@@ -13,7 +13,10 @@ final class LazyEngine implements Engine
      */
     private $factory;
 
-    private ?Engine $engine = null;
+    /**
+     * @var Engine|null
+     */
+    private $engine = null;
 
     /**
      * @param callable(): Engine $factory
@@ -28,11 +31,6 @@ final class LazyEngine implements Engine
         return $this->engine()->request($method, $arguments);
     }
 
-    public function getMetadata(): Metadata
-    {
-        return $this->engine()->getMetadata();
-    }
-
     private function engine(): Engine
     {
         if (!$this->engine) {
@@ -40,5 +38,10 @@ final class LazyEngine implements Engine
         }
 
         return $this->engine;
+    }
+
+    public function getMetadata(): Metadata
+    {
+        return $this->engine()->getMetadata();
     }
 }

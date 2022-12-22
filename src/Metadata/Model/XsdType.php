@@ -6,29 +6,62 @@ namespace Soap\Engine\Metadata\Model;
 
 final class XsdType
 {
-    private string $name;
-    private string $baseType = '';
+    /**
+     * @var string
+     */
+    private $name;
 
-    private string $xmlNamespace = '';
-    private string $xmlNamespaceName = '';
+    /**
+     * @var string
+     */
+    private $baseType = '';
 
-    private array $meta = [];
-    private array $memberTypes = [];
+    /**
+     * @var string
+     */
+    private $xmlNamespace = '';
+
+    /**
+     * @var string
+     */
+    private $xmlNamespaceName = '';
+
+    /**
+     * @var array
+     */
+    private $meta = [];
+
+    /**
+     * @var array
+     */
+    private $memberTypes = [];
 
     public function __construct(string $name)
     {
         $this->name = $name;
     }
 
-    public static function create(string $name): self
-    {
-        return new self($name);
-    }
-
     public static function guess(string $name): self
     {
         return self::create($name)
-           ->withBaseType(self::convertBaseType($name, ''));
+            ->withBaseType(self::convertBaseType($name, ''));
+    }
+
+    public function withBaseType(string $baseType): self
+    {
+        $new = clone $this;
+        $new->baseType = self::convertBaseType($baseType, $baseType);
+
+        if ($new->baseType !== $baseType) {
+            $new->memberTypes[] = $baseType;
+        }
+
+        return $new;
+    }
+
+    private static function convertBaseType(string $baseType, string $fallback): string
+    {
+        return self::fetchAllKnownBaseTypeMappings()[strtolower($baseType)] ?? $fallback;
     }
 
     /**
@@ -83,6 +116,11 @@ final class XsdType
         ];
     }
 
+    public static function create(string $name): self
+    {
+        return new self($name);
+    }
+
     public function getName(): string
     {
         return $this->name;
@@ -129,18 +167,6 @@ final class XsdType
         return $new;
     }
 
-    public function withBaseType(string $baseType): self
-    {
-        $new = clone $this;
-        $new->baseType = self::convertBaseType($baseType, $baseType);
-
-        if ($new->baseType !== $baseType) {
-            $new->memberTypes[] = $baseType;
-        }
-
-        return $new;
-    }
-
     public function withMemberTypes(array $memberTypes): self
     {
         $new = clone $this;
@@ -165,10 +191,5 @@ final class XsdType
     public function __toString(): string
     {
         return $this->name;
-    }
-
-    private static function convertBaseType(string $baseType, string $fallback): string
-    {
-        return self::fetchAllKnownBaseTypeMappings()[strtolower($baseType)] ?? $fallback;
     }
 }

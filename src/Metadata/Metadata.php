@@ -10,5 +10,6 @@ use Soap\Engine\Metadata\Collection\TypeCollection;
 interface Metadata
 {
     public function getTypes(): TypeCollection;
+
     public function getMethods(): MethodCollection;
 }

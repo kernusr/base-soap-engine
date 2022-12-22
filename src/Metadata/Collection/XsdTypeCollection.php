@@ -17,7 +17,7 @@ final class XsdTypeCollection implements Countable, IteratorAggregate
     /**
      * @var list<XsdType>
      */
-    private array $types;
+    private $types;
 
     /**
      * @no-named-arguments
@@ -40,7 +40,7 @@ final class XsdTypeCollection implements Countable, IteratorAggregate
         return count($this->types);
     }
 
-    public function map(callable  $callback): array
+    public function map(callable $callback): array
     {
         return array_map($callback, $this->types);
     }

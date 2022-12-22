@@ -8,8 +8,15 @@ use Soap\Engine\Metadata\Collection\PropertyCollection;
 
 final class Type
 {
-    private XsdType $xsdType;
-    private PropertyCollection $properties;
+    /**
+     * @var XsdType
+     */
+    private $xsdType;
+
+    /**
+     * @var PropertyCollection
+     */
+    private $properties;
 
     public function __construct(XsdType $xsdType, PropertyCollection $properties)
     {

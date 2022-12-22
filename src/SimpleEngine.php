@@ -8,13 +8,17 @@ use Soap\Engine\Metadata\Metadata;
 
 final class SimpleEngine implements Engine
 {
-    private Driver $driver;
-    private Transport $transport;
+    /**
+     * @var Driver
+     */
+    private $driver;
+    /**
+     * @var Transport
+     */
+    private $transport;
 
-    public function __construct(
-        Driver $driver,
-        Transport $transport
-    ) {
+    public function __construct(Driver $driver, Transport $transport)
+    {
         $this->driver = $driver;
         $this->transport = $transport;
     }

@@ -1,10 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Soap\Engine\HttpBinding;
 
 final class SoapResponse
 {
-    private string $payload;
+    /**
+     * @var string
+     */
+    private $payload;
 
     public function __construct(string $payload)
     {

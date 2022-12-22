@@ -17,7 +17,7 @@ final class PropertyCollection implements Countable, IteratorAggregate
     /**
      * @var list<Property>
      */
-    private array $properties;
+    private $properties;
 
     /**
      * @no-named-arguments
@@ -37,7 +37,7 @@ final class PropertyCollection implements Countable, IteratorAggregate
         return count($this->properties);
     }
 
-    public function map(callable  $callback): array
+    public function map(callable $callback): array
     {
         return array_map($callback, $this->properties);
     }

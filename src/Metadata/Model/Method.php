@@ -8,9 +8,20 @@ use Soap\Engine\Metadata\Collection\ParameterCollection;
 
 final class Method
 {
-    private ParameterCollection $parameters;
-    private string $name;
-    private XsdType $returnType;
+    /**
+     * @var ParameterCollection
+     */
+    private $parameters;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var XsdType
+     */
+    private $returnType;
 
     public function __construct(string $name, ParameterCollection $parameters, XsdType $returnType)
     {

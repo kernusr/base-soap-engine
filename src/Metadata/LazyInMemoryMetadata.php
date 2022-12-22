@@ -9,9 +9,21 @@ use Soap\Engine\Metadata\Collection\TypeCollection;
 
 final class LazyInMemoryMetadata implements Metadata
 {
-    private Metadata $metadata;
-    private ?TypeCollection $types = null;
-    private ?MethodCollection $methods = null;
+    /**
+     * @var Metadata
+     */
+    private $metadata;
+
+    /**
+     * @var TypeCollection|null
+     */
+
+    private $types = null;
+
+    /**
+     * @var MethodCollection|null
+     */
+    private $methods = null;
 
     public function __construct(Metadata $metadata)
     {

@@ -6,8 +6,15 @@ namespace Soap\Engine\Metadata\Model;
 
 final class Parameter
 {
-    private string $name;
-    private XsdType $type;
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var XsdType
+     */
+    private $type;
 
     public function __construct(string $name, XsdType $type)
     {

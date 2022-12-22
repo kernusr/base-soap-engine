@@ -18,7 +18,7 @@ final class TypeCollection implements Countable, IteratorAggregate
     /**
      * @var list<Type>
      */
-    private array $types;
+    private $types;
 
     /**
      * @no-named-arguments

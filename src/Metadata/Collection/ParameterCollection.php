@@ -17,7 +17,7 @@ final class ParameterCollection implements Countable, IteratorAggregate
     /**
      * @var list<Parameter>
      */
-    private array $parameters;
+    private $parameters;
 
     /**
      * @no-named-arguments
@@ -37,7 +37,7 @@ final class ParameterCollection implements Countable, IteratorAggregate
         return count($this->parameters);
     }
 
-    public function map(callable  $callback): array
+    public function map(callable $callback): array
     {
         return array_map($callback, $this->parameters);
     }
