@@ -68,7 +68,7 @@ final class TypeCollection implements Countable, IteratorAggregate
      * @param T $initial
      * @return T
      */
-    public function reduce(callable $reducer, mixed $initial)
+    public function reduce(callable $reducer, $initial)
     {
         return array_reduce(
             $this->types,
