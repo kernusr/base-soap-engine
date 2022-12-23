@@ -9,9 +9,9 @@ use Soap\Engine\Metadata\Metadata;
 
 final class PassThroughDriver implements Driver
 {
-    private string $request;
-    private array $response;
-    private Metadata $metadata;
+    private $request;
+    private $response;
+    private $metadata;
 
     public function __construct(string $request, array $response, Metadata $metadata)
     {

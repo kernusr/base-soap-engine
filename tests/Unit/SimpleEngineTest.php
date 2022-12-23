@@ -14,9 +14,9 @@ use SoapTest\Engine\Fixtures\PassThroughDriver;
 
 final class SimpleEngineTest extends TestCase
 {
-    private SimpleEngine $engine;
-    private Metadata $metadata;
-    private Transport $transport;
+    private $engine;
+    private $metadata;
+    private $transport;
 
     protected function setUp(): void
     {

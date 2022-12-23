@@ -16,9 +16,9 @@ use SoapTest\Engine\Fixtures\PassThroughDriver;
 
 final class LazyEngineTest extends TestCase
 {
-    private LazyEngine $engine;
-    private Metadata $metadata;
-    private Transport $transport;
+    private $engine;
+    private $metadata;
+    private $transport;
 
     protected function setUp(): void
     {
@@ -26,14 +26,16 @@ final class LazyEngineTest extends TestCase
         $this->transport = new DummyTransport('response');
 
         $this->engine = new LazyEngine(
-            fn () => new SimpleEngine(
-                new PassThroughDriver(
-                    'request',
-                    ['object'],
-                    $this->metadata
-                ),
-                $this->transport
-            )
+            function() {
+                return new SimpleEngine(
+                    new PassThroughDriver(
+                        'request',
+                        ['object'],
+                        $this->metadata
+                    ),
+                    $this->transport
+                );
+            }
         );
     }
 

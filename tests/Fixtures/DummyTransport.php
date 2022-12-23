@@ -10,7 +10,7 @@ use Soap\Engine\Transport;
 
 final class DummyTransport implements Transport
 {
-    private string $response;
+    private $response;
 
     public function __construct(string $response)
     {

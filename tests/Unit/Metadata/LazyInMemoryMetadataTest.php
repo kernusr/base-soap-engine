@@ -11,7 +11,7 @@ use Soap\Engine\Metadata\Metadata;
 
 final class LazyInMemoryMetadataTest extends TestCase
 {
-    private Metadata $metadata;
+    private $metadata;
 
     protected function setUp(): void
     {

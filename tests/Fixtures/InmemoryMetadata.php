@@ -10,8 +10,8 @@ use Soap\Engine\Metadata\Metadata;
 
 final class InmemoryMetadata implements Metadata
 {
-    private TypeCollection $types;
-    private MethodCollection $methods;
+    private $types;
+    private $methods;
 
     public function __construct(?TypeCollection $types = null, ?MethodCollection $methods = null)
     {
