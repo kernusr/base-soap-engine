@@ -23,7 +23,7 @@ Every component above can be used seperately in order to create your own customi
 # Installation
 
 ```shell
-composer install php-soap/engine
+composer install php-soap-backports/engine
 ```
 
 ## Engines
