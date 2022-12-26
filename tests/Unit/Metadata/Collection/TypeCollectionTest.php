@@ -13,7 +13,7 @@ use Soap\Engine\Metadata\Model\XsdType;
 
 final class TypeCollectionTest extends TestCase
 {
-    private TypeCollection $collection;
+    private $collection;
 
     protected function setUp(): void
     {
@@ -26,7 +26,13 @@ final class TypeCollectionTest extends TestCase
     public function test_it_can_iterate_over_types(): void
     {
         static::assertCount(1, $this->collection);
-        static::assertSame([...$this->collection], $this->collection->map(static fn ($item) => $item));
+        $collection = [];
+        foreach ($this->collection as $method){
+            $collection[] = $method;
+        }
+        static::assertSame($collection, $this->collection->map(static function($item) {
+            return $item;
+        }));
     }
 
     
@@ -53,11 +59,15 @@ final class TypeCollectionTest extends TestCase
     
     public function test_it_can_filter(): void
     {
-        $result = $this->collection->filter(static fn (Type $type) => true);
+        $result = $this->collection->filter(static function(Type $type) {
+            return true;
+        });
         static::assertNotSame($this->collection, $result);
         static::assertCount(1, $result);
 
-        $result = $this->collection->filter(static fn (Type $type) => false);
+        $result = $this->collection->filter(static function(Type $type) {
+            return false;
+        });
         static::assertNotSame($this->collection, $result);
         static::assertCount(0, $result);
     }

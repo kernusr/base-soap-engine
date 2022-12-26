@@ -13,7 +13,7 @@ use Soap\Engine\Metadata\Model\XsdType;
 
 final class MethodCollectionTest extends TestCase
 {
-    private MethodCollection $collection;
+    private $collection;
 
     protected function setUp(): void
     {
@@ -26,7 +26,13 @@ final class MethodCollectionTest extends TestCase
     public function test_it_can_iterate_over_methods(): void
     {
         static::assertCount(1, $this->collection);
-        static::assertSame([...$this->collection], $this->collection->map(static fn ($item) => $item));
+        $collection = [];
+        foreach ($this->collection as $method){
+            $collection[] = $method;
+        }
+        static::assertSame($collection, $this->collection->map(static function($item) {
+            return $item;
+        }));
     }
 
     
