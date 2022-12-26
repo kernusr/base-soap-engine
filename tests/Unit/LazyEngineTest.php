@@ -7,9 +7,7 @@ namespace SoapTest\Engine;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use Soap\Engine\LazyEngine;
-use Soap\Engine\Metadata\Metadata;
 use Soap\Engine\SimpleEngine;
-use Soap\Engine\Transport;
 use SoapTest\Engine\Fixtures\DummyTransport;
 use SoapTest\Engine\Fixtures\InmemoryMetadata;
 use SoapTest\Engine\Fixtures\PassThroughDriver;
@@ -26,7 +24,7 @@ final class LazyEngineTest extends TestCase
         $this->transport = new DummyTransport('response');
 
         $this->engine = new LazyEngine(
-            function() {
+            function () {
                 return new SimpleEngine(
                     new PassThroughDriver(
                         'request',

@@ -27,10 +27,10 @@ final class TypeCollectionTest extends TestCase
     {
         static::assertCount(1, $this->collection);
         $collection = [];
-        foreach ($this->collection as $method){
+        foreach ($this->collection as $method) {
             $collection[] = $method;
         }
-        static::assertSame($collection, $this->collection->map(static function($item) {
+        static::assertSame($collection, $this->collection->map(static function ($item) {
             return $item;
         }));
     }
@@ -59,13 +59,13 @@ final class TypeCollectionTest extends TestCase
     
     public function test_it_can_filter(): void
     {
-        $result = $this->collection->filter(static function(Type $type) {
+        $result = $this->collection->filter(static function (Type $type) {
             return true;
         });
         static::assertNotSame($this->collection, $result);
         static::assertCount(1, $result);
 
-        $result = $this->collection->filter(static function(Type $type) {
+        $result = $this->collection->filter(static function (Type $type) {
             return false;
         });
         static::assertNotSame($this->collection, $result);

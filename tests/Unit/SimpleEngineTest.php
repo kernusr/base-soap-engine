@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace SoapTest\Engine;
 
 use PHPUnit\Framework\TestCase;
-use Soap\Engine\Metadata\Metadata;
 use Soap\Engine\SimpleEngine;
-use Soap\Engine\Transport;
 use SoapTest\Engine\Fixtures\DummyTransport;
 use SoapTest\Engine\Fixtures\InmemoryMetadata;
 use SoapTest\Engine\Fixtures\PassThroughDriver;

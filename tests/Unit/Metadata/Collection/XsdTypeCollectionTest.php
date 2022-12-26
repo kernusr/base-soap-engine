@@ -24,10 +24,10 @@ final class XsdTypeCollectionTest extends TestCase
     {
         static::assertCount(1, $this->collection);
         $collection = [];
-        foreach ($this->collection as $method){
+        foreach ($this->collection as $method) {
             $collection[] = $method;
         }
-        static::assertSame($collection, $this->collection->map(static function($item) {
+        static::assertSame($collection, $this->collection->map(static function ($item) {
             return $item;
         }));
     }
