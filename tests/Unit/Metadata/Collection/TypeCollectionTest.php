@@ -22,7 +22,7 @@ final class TypeCollectionTest extends TestCase
         );
     }
 
-    
+
     public function test_it_can_iterate_over_types(): void
     {
         static::assertCount(1, $this->collection);
@@ -35,28 +35,30 @@ final class TypeCollectionTest extends TestCase
         }));
     }
 
-    
+
     public function test_it_can_fetch_by_name(): void
     {
         $type = $this->collection->fetchFirstByName('Response');
         static::assertSame('Response', $type->getName());
     }
 
-    
+
     public function test_it_can_fail_fetching_by_name(): void
     {
         $this->expectException(MetadataException::class);
         $this->collection->fetchFirstByName('nope');
     }
 
-    
+
     public function test_it_can_reduce(): void
     {
-        $result = $this->collection->reduce(static fn (int $i, Type $item) => $i + 1, 0);
+        $result = $this->collection->reduce(static function (int $i, Type $item) {
+            return $i + 1;
+        }, 0);
         static::assertSame(1, $result);
     }
 
-    
+
     public function test_it_can_filter(): void
     {
         $result = $this->collection->filter(static function (Type $type) {
